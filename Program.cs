@@ -1,5 +1,6 @@
 ﻿using Demo01.Data;
 using System.Collections;
+using System.ComponentModel.DataAnnotations;
 using static Demo_2LINQ.ListGenerator;
 namespace Demo_2LINQ
 {
@@ -37,26 +38,120 @@ namespace Demo_2LINQ
             ///   //   ToHashSet() =>  is used to convert the input elements in the collection to an Hashset.
 
             ///     // OfType() 
-        ///     //ArrayList :   DataType   مش من نفس ال   Element  يعني بيقدرو يشيلوا  Hetrogenise   دي حاجه اسمها 
-        ///     //OfType() => operator is used to return the element of the specific type, and another element will be ignored from the list/collection.
-        ///     ArrayList Obj =  new ArrayList() 
-        ///     { 
-        ///          "Omar" ,
-        ///          "Ahmed",
-        ///          "Mona",
-        ///          "Aliaa",
-        ///
-        ///          1,
-        ///          2,
-        ///          3
-        ///     };
-        ///     var Result = Obj.OfType<string  /*int*/ >();   
-        ///     foreach (var i in Result) 
-        ///         Console.WriteLine(i);  // Omar   Ahmed  Mona   Aliaa
+            ///     //ArrayList :   DataType   مش من نفس ال   Element  يعني بيقدرو يشيلوا  Hetrogenise   دي حاجه اسمها 
+            ///     //OfType() => operator is used to return the element of the specific type, and another element will be ignored from the list/collection.
+            ///     ArrayList Obj =  new ArrayList() 
+            ///     { 
+            ///          "Omar" ,
+            ///          "Ahmed",
+            ///          "Mona",
+            ///          "Aliaa",
+            ///
+            ///          1,
+            ///          2,
+            ///          3
+            ///     };
+            ///     var Result = Obj.OfType<string  /*int*/ >();   
+            ///     foreach (var i in Result) 
+            ///         Console.WriteLine(i);  // Omar   Ahmed  Mona   Aliaa
 
 
 
             #endregion
+
+            #region Generation Operators - Deferred Execution
+
+
+            //Valid With Fluent Syntax Only
+            //The Only Way To Call Them is As Static Methods from Enumerable Class
+
+            //var Result = Enumerable.Range(0, 100); // 0....99
+            //foreach (var item in Result)
+            //    Console.Write( $" {item} " );
+
+            //var Result = Enumerable.Repeat(2, 100);
+            //foreach (var item in Result)
+            //    Console.Write($" {item} ");   // Return IEnumerable Of  100 Element each One = 2
+
+            //var Result = Enumerable.Repeat(new Product() , 100);
+            ////Return IEnumerable Of 100 Product 
+            //foreach (var item in Result)
+            //    Console.Write($" {item} ");
+
+            //   var arrayProduct = Enumerable.Empty<Product>().ToArray();
+            //   Product[] Products = new Product[0];
+            //   // Both Will Generate an Empty Array Of Products 
+
+            //   var List = Enumerable.Empty<Product>().ToList();
+            //   List<Product> products02 = new List<Product>();
+            //   // Both Will Generate an Empty List  Of Products 
+
+
+            //   foreach (var item in List)
+            //       Console.Write($" {item} ");
+
+
+
+
+
+
+
+
+
+
+
+            #endregion
+
+            #region Set Operators [Union Family] - Deferred Execution
+            /*
+             Union => WithOut Duplication 
+
+             Concat [UnionAll] => With Duplication
+            
+             Intersect => Return Elements in 1st Sequence and Exist in 2nd Sequence 
+
+             Except=> Return Elements in 1st Sequence and Not Exist in 2nd Sequence
+
+             Distinct => Remove Duplicates [Concat + Distinct => Act as Union]
+             */
+
+
+        //     var Seq01 = Enumerable.Range(0, 100); // 0 ....99 
+        //     var Seq02 = Enumerable.Range(50, 100); // 50.....149
+        // 
+        //     //var Result = Seq01.Union(Seq02);  // 0...149 -> Remove Duplication        //     من نفس النوع    Two  Sequance  لا ال  
+        //     //var Result = Seq01.Concat(Seq02); // 0 .. 99 +  50...149
+        //     // Result = Result.Distinct();  // Remove Duplication
+        // 
+        //     //var Result = Seq01.Intersect(Seq02); // هيرجعلي المشترك بين الاتنين 
+        //     var Result = Seq01.Except(Seq02);  //   Seq02  وف نفس الوقت مش موجود فال   Seq01 هيرجع الموجود فال 
+        //     Console.WriteLine( "\n===========Seq01===========");
+        //     foreach (var item in Seq01)
+        //         Console.Write($" {item} ");
+        //  
+        //     Console.WriteLine("\n===========Seq02===========");
+        //     foreach (var item in Seq02)
+        //         Console.Write($" {item} ");
+        //  
+        //     Console.WriteLine("\n===========Result ===========");
+        //  
+        //     foreach (var item in Result)
+        //         Console.Write($" {item} ");
+        // 
+
+
+            #endregion
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 }
