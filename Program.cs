@@ -142,33 +142,59 @@ namespace Demo_2LINQ
 
             #endregion
 
-            #region Quantifier Operator - Return boolean
-        //    var Result = ProductList.Any();
-        //    // If Sequence Contain At Least One Element => True 
-        //    Result = ProductList.Any(P => P.UnitsInStock > 1000);
-        //    // If Sequence Contain At Least One Element  Match Condition  => True 
-        //
-        //
-        //
-        //    Result = ProductList.All(P => P.UnitsInStock > 1); // False 
-        //                                                       //  All => If All Elements in Sequence Match Condition Will Return True
-        //
-        //
-        //
-        //
-        //        var Seq01 = Enumerable.Range(0, 100); // 0 ....99 
-        //        var Seq02 = Enumerable.Range(0, 100); // 0 ....99   // True 
-        //        //var Seq02 = Enumerable.Range(50, 100); // 50.....149 // False 
-        //
-        //    Result = Seq01.SequenceEqual(Seq02);
-        //    // SequenceEqual => If Two Sequences are Equal Will Return True 
-        //
-        //    Console.WriteLine(Result);
-        //
-        //
-        //
+            #region Quantifier Operator - Deferred Execution -  Return boolean
+            //    var Result = ProductList.Any();
+            //    // If Sequence Contain At Least One Element => True 
+            //    Result = ProductList.Any(P => P.UnitsInStock > 1000);
+            //    // If Sequence Contain At Least One Element  Match Condition  => True 
+            //
+            //
+            //
+            //    Result = ProductList.All(P => P.UnitsInStock > 1); // False 
+            //                                                       //  All => If All Elements in Sequence Match Condition Will Return True
+            //
+            //
+            //
+            //
+            //        var Seq01 = Enumerable.Range(0, 100); // 0 ....99 
+            //        var Seq02 = Enumerable.Range(0, 100); // 0 ....99   // True 
+            //        //var Seq02 = Enumerable.Range(50, 100); // 50.....149 // False 
+            //
+            //    Result = Seq01.SequenceEqual(Seq02);
+            //    // SequenceEqual => If Two Sequences are Equal Will Return True 
+            //
+            //    Console.WriteLine(Result);
+            //
+            //
+            //
 
 
+
+
+            #endregion
+
+            #region Zipping Operator - Deferred Execution - ZIP
+
+      //      //ZIP => Produces a sequence with elements from the Two Or Three specific sequences.
+      // 
+      //      string[] Names = { "Omar", "Amr", "Ahmed", "May", "Aya" };
+      //      int[] Numbers = Enumerable.Range(0, 10).ToArray();
+      //      char[] Chars = { 'A', 'B', 'C', 'D' };
+      // 
+      //      //var Result = Names.Zip(Numbers);
+      //      // (Omar, 0)
+      //      // (Amr, 1)
+      //      // (Ahmed, 2)
+      //      // (May, 3)
+      //      // (Aya, 4)
+      // 
+      // 
+      //      //var Result = Names.Zip(Numbers, (Names, Numbers) => new { index = Numbers, Names });   //    OutPut  لو عايزين نتحكم ف شكل ال 
+      // 
+      //      var Result = Names.Zip(Names, Chars);  // OutPut =>   فيهم   Sequance    هيكون علي حسب اقل 
+      //      foreach (var item  in Result)          //  علشان هو عندو اقل واحد فيهم   Chars  الي هو بتاع ال  Sequance  يعني مثلا هنا هيكون علي حسب ال 
+      //          Console.WriteLine(item);
+      // 
 
 
             #endregion
@@ -180,8 +206,7 @@ namespace Demo_2LINQ
 
 
 
-
-
         }
     }
 }
+ 
