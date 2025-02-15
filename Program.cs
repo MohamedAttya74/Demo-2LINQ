@@ -116,32 +116,62 @@ namespace Demo_2LINQ
              */
 
 
-        //     var Seq01 = Enumerable.Range(0, 100); // 0 ....99 
-        //     var Seq02 = Enumerable.Range(50, 100); // 50.....149
-        // 
-        //     //var Result = Seq01.Union(Seq02);  // 0...149 -> Remove Duplication        //     من نفس النوع    Two  Sequance  لا ال  
-        //     //var Result = Seq01.Concat(Seq02); // 0 .. 99 +  50...149
-        //     // Result = Result.Distinct();  // Remove Duplication
-        // 
-        //     //var Result = Seq01.Intersect(Seq02); // هيرجعلي المشترك بين الاتنين 
-        //     var Result = Seq01.Except(Seq02);  //   Seq02  وف نفس الوقت مش موجود فال   Seq01 هيرجع الموجود فال 
-        //     Console.WriteLine( "\n===========Seq01===========");
-        //     foreach (var item in Seq01)
-        //         Console.Write($" {item} ");
-        //  
-        //     Console.WriteLine("\n===========Seq02===========");
-        //     foreach (var item in Seq02)
-        //         Console.Write($" {item} ");
-        //  
-        //     Console.WriteLine("\n===========Result ===========");
-        //  
-        //     foreach (var item in Result)
-        //         Console.Write($" {item} ");
-        // 
+            //     var Seq01 = Enumerable.Range(0, 100); // 0 ....99 
+            //     var Seq02 = Enumerable.Range(50, 100); // 50.....149
+            // 
+            //     //var Result = Seq01.Union(Seq02);  // 0...149 -> Remove Duplication        //     من نفس النوع    Two  Sequance  لا ال  
+            //     //var Result = Seq01.Concat(Seq02); // 0 .. 99 +  50...149
+            //     // Result = Result.Distinct();  // Remove Duplication
+            // 
+            //     //var Result = Seq01.Intersect(Seq02); // هيرجعلي المشترك بين الاتنين 
+            //     var Result = Seq01.Except(Seq02);  //   Seq02  وف نفس الوقت مش موجود فال   Seq01 هيرجع الموجود فال 
+            //     Console.WriteLine( "\n===========Seq01===========");
+            //     foreach (var item in Seq01)
+            //         Console.Write($" {item} ");
+            //  
+            //     Console.WriteLine("\n===========Seq02===========");
+            //     foreach (var item in Seq02)
+            //         Console.Write($" {item} ");
+            //  
+            //     Console.WriteLine("\n===========Result ===========");
+            //  
+            //     foreach (var item in Result)
+            //         Console.Write($" {item} ");
+            // 
 
 
             #endregion
 
+            #region Quantifier Operator - Return boolean
+        //    var Result = ProductList.Any();
+        //    // If Sequence Contain At Least One Element => True 
+        //    Result = ProductList.Any(P => P.UnitsInStock > 1000);
+        //    // If Sequence Contain At Least One Element  Match Condition  => True 
+        //
+        //
+        //
+        //    Result = ProductList.All(P => P.UnitsInStock > 1); // False 
+        //                                                       //  All => If All Elements in Sequence Match Condition Will Return True
+        //
+        //
+        //
+        //
+        //        var Seq01 = Enumerable.Range(0, 100); // 0 ....99 
+        //        var Seq02 = Enumerable.Range(0, 100); // 0 ....99   // True 
+        //        //var Seq02 = Enumerable.Range(50, 100); // 50.....149 // False 
+        //
+        //    Result = Seq01.SequenceEqual(Seq02);
+        //    // SequenceEqual => If Two Sequences are Equal Will Return True 
+        //
+        //    Console.WriteLine(Result);
+        //
+        //
+        //
+
+
+
+
+            #endregion
 
 
 
