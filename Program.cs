@@ -175,27 +175,116 @@ namespace Demo_2LINQ
 
             #region Zipping Operator - Deferred Execution - ZIP
 
-      //      //ZIP => Produces a sequence with elements from the Two Or Three specific sequences.
-      // 
-      //      string[] Names = { "Omar", "Amr", "Ahmed", "May", "Aya" };
-      //      int[] Numbers = Enumerable.Range(0, 10).ToArray();
-      //      char[] Chars = { 'A', 'B', 'C', 'D' };
-      // 
-      //      //var Result = Names.Zip(Numbers);
-      //      // (Omar, 0)
-      //      // (Amr, 1)
-      //      // (Ahmed, 2)
-      //      // (May, 3)
-      //      // (Aya, 4)
-      // 
-      // 
-      //      //var Result = Names.Zip(Numbers, (Names, Numbers) => new { index = Numbers, Names });   //    OutPut  لو عايزين نتحكم ف شكل ال 
-      // 
-      //      var Result = Names.Zip(Names, Chars);  // OutPut =>   فيهم   Sequance    هيكون علي حسب اقل 
-      //      foreach (var item  in Result)          //  علشان هو عندو اقل واحد فيهم   Chars  الي هو بتاع ال  Sequance  يعني مثلا هنا هيكون علي حسب ال 
-      //          Console.WriteLine(item);
-      // 
+            //      //ZIP => Produces a sequence with elements from the Two Or Three specific sequences.
+            // 
+            //      string[] Names = { "Omar", "Amr", "Ahmed", "May", "Aya" };
+            //      int[] Numbers = Enumerable.Range(0, 10).ToArray();
+            //      char[] Chars = { 'A', 'B', 'C', 'D' };
+            // 
+            //      //var Result = Names.Zip(Numbers);
+            //      // (Omar, 0)
+            //      // (Amr, 1)
+            //      // (Ahmed, 2)
+            //      // (May, 3)
+            //      // (Aya, 4)
+            // 
+            // 
+            //      //var Result = Names.Zip(Numbers, (Names, Numbers) => new { index = Numbers, Names });   //    OutPut  لو عايزين نتحكم ف شكل ال 
+            // 
+            //      var Result = Names.Zip(Names, Chars);  // OutPut =>   فيهم   Sequance    هيكون علي حسب اقل 
+            //      foreach (var item  in Result)          //  علشان هو عندو اقل واحد فيهم   Chars  الي هو بتاع ال  Sequance  يعني مثلا هنا هيكون علي حسب ال 
+            //          Console.WriteLine(item);
+            // 
 
+
+            #endregion
+
+
+            #region Grouping Operators  
+
+            #region Get Products Grouped by Category
+
+            ///  // Query Syntax
+            /// var Result = from P in ProductList
+            ///             group P by P.Category;
+
+            ///   // Fluent Syntax 
+            ///   var Result = ProductList.GroupBy(P => P.Category);
+
+
+
+
+
+
+            ///  foreach (var item  in Result)
+            ///  {
+            ///      Console.WriteLine(item);    //System.Linq.Grouping`2[System.String,Demo01.Data.Product]
+            ///                                  //    كدا الطريقه دي مش هتنفع معانا 
+            ///  }
+
+
+            #endregion
+
+            #region Get Products in Stock Grouped by Category
+            ///   // Fluent Syntax
+            ///   var Result = ProductList.Where(P => P.UnitsInStock > 0)
+            ///                                   .GroupBy( P =>P.Category );
+
+            ///     // Query Syntax 
+            ///     Result = from P in ProductList
+            ///              where P.UnitsInStock > 0
+            ///              group P by P.Category;
+            #endregion
+
+            #region Get Products in Stock Grouped by Category That Contains More Than 10 Product
+            ///    // Fluent Syntax 
+            /// var Result = ProductList.Where(P => P.UnitsInStock > 0)
+            ///                                 .GroupBy(P => P.Category)
+            ///                                 .Where(P => P.Count() > 10);
+            ///
+
+            ///   //Query Syntax 
+            ///   var Result =  from P in ProductList
+            ///                 where P.UnitsInStock >0
+            ///                 group P by P.Category
+            ///                 into  Category 
+            ///                 where Category.Count() >10 
+            ///                 select Category;
+
+
+
+
+            #endregion
+
+            #region Get Category Name of Products in Stock That Contains More Than 10 Product and Number of Product In Each Category
+
+            ///   // Fluent Syntax 
+            ///   var Result = ProductList.Where(P => P.UnitsInStock > 0)
+            ///                                   .GroupBy(P => P.Category)
+            ///                                   .Where(P => P.Count() > 10)
+            ///                                   .Select( X =>new 
+            ///                                   {
+            ///                                       CategoryName = X.Key,
+            ///                                       Count = X.Count()
+            ///                                   });
+            ///          foreach (var Item in Result)
+            ///          
+            ///              Console.WriteLine(Item);
+
+
+             ///   // Query Synatx        
+       ///    var Result = from P in ProductList
+      ///                 where P.UnitsInStock > 0
+      ///                 group P by P.Category
+      ///                 into Category
+      ///                 where Category.Count() > 10
+      ///                 select new
+      ///                 {
+      ///                     CategoryName = Category.Key,
+      ///                     Count = Category.Count(),
+      ///                 };
+      ///    foreach (var Item in Result) 
+      ///        Console.WriteLine(Item);   //    IEnemerable   لا الي راجع دلوقتي عباره   IGrouping    عملت كدا علشان الي راجع مش 
 
             #endregion
 
@@ -206,7 +295,19 @@ namespace Demo_2LINQ
 
 
 
+            ///    foreach (var Category in Result)
+            ///  {
+            ///      Console.WriteLine(Category.Key);  // Name Of Category       //         من جوه  Category   علي كل  Loop  محتاجين ن 
+            ///      foreach (var Product in Category)
+            ///          Console.WriteLine($"                      {Product.ProductName}");
+            ///  }
+
+            #endregion
+
+
+
+
+
         }
     }
 }
- 
