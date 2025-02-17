@@ -2,6 +2,7 @@
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using static Demo_2LINQ.ListGenerator;
+using System.Text.RegularExpressions;
 namespace Demo_2LINQ
 {
     internal class Program
@@ -199,7 +200,6 @@ namespace Demo_2LINQ
 
             #endregion
 
-
             #region Grouping Operators  
 
             #region Get Products Grouped by Category
@@ -328,31 +328,54 @@ namespace Demo_2LINQ
             ///
             ///   Result = ProductList.Skip(10).Take(10); // اول 10 Skip لو عايز ت 
 
-    //        int[] Numbers = { 5, 4, 3, 1, 9, 8, 6, 7 };
-    //     //   var Result = Numbers.TakeWhile(Num => Num < 9);    //   ف هيتحقق وتمام   True    ب   Condition  طول ما ال   
-    //     //   // TakeWhile => Take Elements Till Element That do not Match Condition
-    //     // 
-    //     //   //Indexed TakeWile 
-    //     //   Result = Numbers.TakeWhile((Num,I) => Num >I);
-    // 
-    //        // SkipWhile 
-    //        var Result = Numbers.SkipWhile(Num => Num %3 != 0);
-    //        //SkipWhile => Skip Elements Till Element That do not Match Condition
-    // 
-    // 
-    // 
-    // 
-    // 
-    // 
-    // 
-    //        foreach (var item in Result) 
-    //            Console.WriteLine(item);
-    //            
-    // 
+            //        int[] Numbers = { 5, 4, 3, 1, 9, 8, 6, 7 };
+            //     //   var Result = Numbers.TakeWhile(Num => Num < 9);    //   ف هيتحقق وتمام   True    ب   Condition  طول ما ال   
+            //     //   // TakeWhile => Take Elements Till Element That do not Match Condition
+            //     // 
+            //     //   //Indexed TakeWile 
+            //     //   Result = Numbers.TakeWhile((Num,I) => Num >I);
+            // 
+            //        // SkipWhile 
+            //        var Result = Numbers.SkipWhile(Num => Num %3 != 0);
+            //        //SkipWhile => Skip Elements Till Element That do not Match Condition
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            //        foreach (var item in Result) 
+            //            Console.WriteLine(item);
+            //            
+            // 
 
             #endregion
 
+            #region Let and Into [Valid With Query Syntax Only]
 
+
+        ///   List<string> Names  = new List<string>() { "Omar" ,"Ali" , "Sally" ,"Moahmed" , "Ahmed" };
+        ///   //  A   E   I  O   U
+        /// 
+        ///   var Result = from N in Names
+        ///                select Regex.Replace(N, "[AEIOUaeiou]", string.Empty)   //             Regex Calss   علشان يظهر ويشتغل معاك ال  using System.Text.RegularExpressions;          متنساش تعمل 
+        ///                into NoVowelNames
+        ///                where  NoVowelNames.Length>3
+        ///                select NoVowelNames;
+        ///   //  Into => Restart Query With Introducing A new Range  Variable = NoVowelNames
+        /// 
+        ///   Result = from N in Names
+        ///            let NoVowelNames= Regex.Replace(N, "[AEIOUaeiou]", string.Empty)
+        ///            where NoVowelNames.Length>3
+        ///            select NoVowelNames;
+        /// 
+        ///   // let => Continue Query With Added A new Range  Variable = NoVowelNames
+        /// 
+        ///   foreach (string Name in Result) 
+        ///       Console.WriteLine(Name);
+
+            #endregion
 
         }
     }
