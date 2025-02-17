@@ -272,19 +272,19 @@ namespace Demo_2LINQ
             ///              Console.WriteLine(Item);
 
 
-             ///   // Query Synatx        
-       ///    var Result = from P in ProductList
-      ///                 where P.UnitsInStock > 0
-      ///                 group P by P.Category
-      ///                 into Category
-      ///                 where Category.Count() > 10
-      ///                 select new
-      ///                 {
-      ///                     CategoryName = Category.Key,
-      ///                     Count = Category.Count(),
-      ///                 };
-      ///    foreach (var Item in Result) 
-      ///        Console.WriteLine(Item);   //    IEnemerable   لا الي راجع دلوقتي عباره   IGrouping    عملت كدا علشان الي راجع مش 
+            ///   // Query Synatx        
+            ///    var Result = from P in ProductList
+            ///                 where P.UnitsInStock > 0
+            ///                 group P by P.Category
+            ///                 into Category
+            ///                 where Category.Count() > 10
+            ///                 select new
+            ///                 {
+            ///                     CategoryName = Category.Key,
+            ///                     Count = Category.Count(),
+            ///                 };
+            ///    foreach (var Item in Result) 
+            ///        Console.WriteLine(Item);   //    IEnemerable   لا الي راجع دلوقتي عباره   IGrouping    عملت كدا علشان الي راجع مش 
 
             #endregion
 
@@ -304,7 +304,53 @@ namespace Demo_2LINQ
 
             #endregion
 
+            #region Partitioning Operators
 
+            ///    // Take 
+            ///    var Result = ProductList.Take(10);
+            ///    //Take => Take Number of Elements From First Only 
+            /// 
+            ///   Result = ProductList.Where(P => P.UnitsInStock > 0).Take(5);
+            ///   // Return First Five Element Match The Condition 
+            ///   
+            ///   Result = ProductList.TakeLast(10);
+            ///   // TakeLast => Take Number of Elements From Last Only
+            ///   Result = ProductList.Where(P => P.UnitsInStock >0).TakeLast(10);
+            ///   // Return Last Ten Element Match The Condition 
+
+
+
+            ///   // Skip
+            ///   var Result = ProductList.Where (P => P.UnitsInStock ==0) .Skip(2);
+            ///   // Skip => Skip Number of Elements From First And Get Rest Of Elements
+            ///   Result = ProductList.Where (P => P.UnitsInStock ==0) .SkipLast(2);
+            ///   // SkipLast => Skip Number of Elements From Last And Get Rest Of Elements
+            ///
+            ///   Result = ProductList.Skip(10).Take(10); // اول 10 Skip لو عايز ت 
+
+    //        int[] Numbers = { 5, 4, 3, 1, 9, 8, 6, 7 };
+    //     //   var Result = Numbers.TakeWhile(Num => Num < 9);    //   ف هيتحقق وتمام   True    ب   Condition  طول ما ال   
+    //     //   // TakeWhile => Take Elements Till Element That do not Match Condition
+    //     // 
+    //     //   //Indexed TakeWile 
+    //     //   Result = Numbers.TakeWhile((Num,I) => Num >I);
+    // 
+    //        // SkipWhile 
+    //        var Result = Numbers.SkipWhile(Num => Num %3 != 0);
+    //        //SkipWhile => Skip Elements Till Element That do not Match Condition
+    // 
+    // 
+    // 
+    // 
+    // 
+    // 
+    // 
+    //        foreach (var item in Result) 
+    //            Console.WriteLine(item);
+    //            
+    // 
+
+            #endregion
 
 
 
